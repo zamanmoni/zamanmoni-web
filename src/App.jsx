@@ -125,7 +125,6 @@ const DATA = {
     rights: '© ২০২৬ মনিরুজ্জামান মনি (zamanmoni.com)। সর্বস্বত্ব সংরক্ষিত।'
   }
 };
-
 export default function App() {
   const [dark, setDark] = useState(true);
   const [lang, setLang] = useState('en');
@@ -260,4 +259,167 @@ export default function App() {
                 <a href="https://www.facebook.com/share/1CZ5ZPiLYm/" target="_blank" rel="noreferrer" className={`flex-1 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border ${dark ? 'bg-slate-800 border-slate-700' : 'bg-slate-100 border-slate-200'}`}>
                   <Facebook className="w-4 h-4 text-blue-500" /> Facebook
                 </a>
-                <a href="https://www.instagram.com/mzaman.moni" target="_blank" rel="noreferrer" className={`flex-1 py-2.5 rounded-
+                <a href="https://www.instagram.com/mzaman.moni" target="_blank" rel="noreferrer" className={`flex-1 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border ${dark ? 'bg-slate-800 border-slate-700' : 'bg-slate-100 border-slate-200'}`}>
+                  <Instagram className="w-4 h-4 text-pink-500" /> Instagram
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className={`py-16 border-y ${dark ? 'bg-slate-900/40 border-slate-800' : 'bg-white border-slate-200'}`}>
+        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-6 space-y-4">
+            <span className="text-xs font-bold tracking-widest uppercase text-sky-500">{t.aboutTag}</span>
+            <h2 className="text-3xl font-bold">{t.aboutTitle}</h2>
+            <p className={dark ? 'text-slate-300' : 'text-slate-600'}>{t.aboutP1}</p>
+            <p className={dark ? 'text-slate-400' : 'text-slate-600'}>{t.aboutP2}</p>
+          </div>
+          <div className="lg:col-span-6 grid gap-4">
+            {t.highlights.map(([title, desc], i) => (
+              <div key={i} className={`p-5 rounded-2xl border flex items-start gap-3.5 ${dark ? 'bg-slate-950 border-slate-800' : 'bg-slate-50 border-slate-200'}`}>
+                <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500"><ShieldCheck className="w-5 h-5" /></div>
+                <div>
+                  <h3 className="font-bold">{title}</h3>
+                  <p className={`text-sm mt-1 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="niches" className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-sky-500">{t.nicheTag}</span>
+            <h2 className="text-3xl font-bold">{t.nicheTitle}</h2>
+            <p className={dark ? 'text-slate-400' : 'text-slate-600'}>{t.nicheSub}</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {t.niches.map(([id, title, desc, tag]) => (
+              <div key={id} className={`p-6 rounded-2xl border ${dark ? 'bg-slate-900/70 border-slate-800' : 'bg-white border-slate-200 shadow-sm'}`}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`p-3 rounded-xl ${dark ? 'bg-slate-950' : 'bg-slate-100'}`}>{iconNiche(id)}</div>
+                  <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${dark ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'}`}>{tag}</span>
+                </div>
+                <h3 className="text-lg font-bold mb-2">{title}</h3>
+                <p className={`text-sm ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="videos" className={`py-16 border-y ${dark ? 'bg-slate-900/40 border-slate-800' : 'bg-slate-100/70 border-slate-200'}`}>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div className="space-y-1">
+              <span className="text-xs font-bold tracking-widest uppercase text-sky-500">{t.vidTag}</span>
+              <h2 className="text-3xl font-bold">{t.vidTitle}</h2>
+              <p className={dark ? 'text-slate-400' : 'text-slate-600'}>{t.vidSub}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {t.tabs.map(([id, label]) => (
+                <button key={id} onClick={() => setTab(id)} className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer ${tab === id ? 'bg-sky-500 text-white' : dark ? 'bg-slate-900 text-slate-300 border border-slate-800' : 'bg-white text-slate-700 border border-slate-200'}`}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {vids.map(([, plat, dur, title, view, grad], idx) => (
+              <div key={idx} className={`rounded-2xl overflow-hidden border flex flex-col justify-between ${dark ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200 shadow-sm'}`}>
+                <div>
+                  <div className={`h-40 bg-gradient-to-br ${grad} p-4 flex flex-col justify-between text-white`}>
+                    <div className="flex justify-between text-xs font-semibold">
+                      <span className="px-2 py-0.5 rounded bg-black/30">{plat}</span>
+                      <span className="px-2 py-0.5 rounded bg-black/40">{dur}</span>
+                    </div>
+                    <div className="self-center w-11 h-11 rounded-full bg-white/20 flex items-center justify-center"><Play className="w-5 h-5 fill-white" /></div>
+                    <span className="text-[11px]">{view}</span>
+                  </div>
+                  <div className="p-5"><h3 className="font-bold text-base">{title}</h3></div>
+                </div>
+                <div className="px-5 pb-5">
+                  <a href="https://www.facebook.com/share/1CZ5ZPiLYm/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs font-semibold text-sky-500">
+                    {t.watch} <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="tools" className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-sky-500">{t.toolTag}</span>
+            <h2 className="text-3xl font-bold">{t.toolTitle}</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {t.tools.map(([cat, name, desc], i) => (
+              <div key={i} className={`p-6 rounded-2xl border ${dark ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-slate-200'}`}>
+                <div className="flex items-center gap-2 text-xs font-semibold text-sky-500 mb-2"><Layers className="w-4 h-4" /> {cat}</div>
+                <h3 className="text-lg font-bold mb-2">{name}</h3>
+                <p className={`text-sm ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 border-t ${dark ? 'bg-slate-900/40 border-slate-800' : 'bg-white border-slate-200'}`}>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-sky-500">{t.socTag}</span>
+            <h2 className="text-3xl font-bold">{t.socTitle}</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {t.socials.map(([name, handle, desc, url, cta, badge], i) => (
+              <a key={i} href={url} target="_blank" rel="noreferrer" className={`p-6 rounded-2xl border flex flex-col justify-between ${dark ? 'bg-slate-950 border-slate-800 hover:border-sky-500' : 'bg-slate-50 border-slate-200 hover:border-sky-400'}`}>
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <div className={`p-3 rounded-xl ${dark ? 'bg-slate-900' : 'bg-white'}`}>{iconSoc(name)}</div>
+                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-sky-500/10 text-sky-400">{badge}</span>
+                  </div>
+                  <h3 className="text-xl font-bold">{name}</h3>
+                  <p className="text-xs font-medium text-sky-500 mb-2">{handle}</p>
+                  <p className={`text-sm mb-5 ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{desc}</p>
+                </div>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-sky-500">{cta} <ArrowUpRight className="w-4 h-4" /></span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-16">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className={`rounded-3xl p-7 sm:p-10 border shadow-xl ${dark ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-slate-200'}`}>
+            <div className="text-center mb-7 space-y-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-sky-500">{t.conTag}</span>
+              <h2 className="text-2xl sm:text-3xl font-bold">{t.conTitle}</h2>
+              <p className={`text-sm ${dark ? 'text-slate-400' : 'text-slate-600'}`}>{t.conSub}</p>
+            </div>
+            {sent ? (
+              <div className="py-8 text-center space-y-3">
+                <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto" />
+                <h3 className="text-xl font-bold">{t.form.sent}</h3>
+                <p className="text-sm text-slate-400">{t.form.sentSub}</p>
+                <button onClick={() => setSent(false)} className="px-5 py-2 rounded-xl text-xs font-semibold bg-sky-500 text-white cursor-pointer">{t.form.reset}</button>
+              </div>
+            ) : (
+              <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input required placeholder={t.form.name} className={`w-full px-4 py-3 rounded-xl text-sm border outline-none ${dark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-50 border-slate-300'}`} />
+                  <input type="email" required placeholder={t.form.email} className={`w-full px-4 py-3 rounded-xl text-sm border outline-none ${dark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-50 border-slate-300'}`} />
+                </div>
+                <select className={`w-full px-4 py-3 rounded-xl text-sm border outline-none ${dark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-50 border-slate-300'}`}>
+                  {t.form.topics.map((tp, i) => <option key={i}>{tp}</option>)}
+                </select>
+                <textarea rows={4} required placeholder={t.form.msg} className={`w-full px-4 py-3 rounded-xl text-sm border outline-none ${dark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-50 border-slate-300'}`} />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                  <span className="flex it
